@@ -26,7 +26,7 @@ interface PolicyProviderProps {
 export function PolicyProvider({ children, socketUrl }: PolicyProviderProps) {
   const [policies, setPolicies] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const role = "ADMIN";
+  const role = "STAFF";
 
   useEffect(() => {
     const socket = new WebSocket(socketUrl);
@@ -85,6 +85,7 @@ export function PolicyProvider({ children, socketUrl }: PolicyProviderProps) {
       isLoading,
     };
   }, [policies, hasPolicy, hasAnyPolicy, role, isLoading]);
+
   console.log(`🚀 ~ PolicyProvider.tsx:86 ~ PolicyProvider ~ value: \n`, value);
 
   return (

@@ -51,7 +51,7 @@ export function withPermission<P extends object>(
     ]);
 
     if (loading) {
-      return <div>Loading...</div>; // or any loading indicator you prefer
+      return <div>Loading...</div>;
     }
 
     if (!allowed && fallback) {

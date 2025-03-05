@@ -84,6 +84,7 @@ wss.on("connection", (ws) => {
 
 app.post("/updatePolicy", (req, res) => {
   const { role, policy } = req.body;
+
   if (!role || !policy) {
     return res
       .status(400)
@@ -95,7 +96,7 @@ app.post("/updatePolicy", (req, res) => {
 
   if (roleSubscriptions[role]) {
     roleSubscriptions[role].forEach((ws) => {
-      ws.send(JSON.stringify({ type: "POLICY_UPDATE", policy }));
+      ws.send(JSON.stringify({ type: "POLICY_UPDATE", newPolicies: policy }));
     });
   }
 
